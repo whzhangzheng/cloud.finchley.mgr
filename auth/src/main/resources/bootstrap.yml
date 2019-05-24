@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 25000
+
+ignore:
+  urls:
+    - /info
+    - /health
+    - /env
+    - /metrics*
+    - /trace
+    - /dump
+    - /hystrix*
+    - /refresh
+    - /logfile
+    - /flyway
+    - /liquibase
+    - /heapdump
+    - /loggers
+    - /auditevents
+    - /jolokia/
+    - /jolokia
+    - /configprops
+    - /css/**/*.*
+    - /img/**/*.*
+    - /js/**/*.*
+    - /fonts/**/*.*
+

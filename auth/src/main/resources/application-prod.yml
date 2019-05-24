@@ -1,0 +1,39 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@192.168.1.143:8761/eureka/,http://${security.user.name}:${security.user.password}@192.168.1.224:8761/eureka/
+
+security:
+  user:
+    name: bjc-cloud
+    password: bjc-CLOUD!2018
+
+spring:
+  application:
+    name: mgr-auth
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.1.246:5432/oa_sys
+    username: bjc_cloud
+    password: godblessme
+  redis:
+    host: 192.168.1.143
+    password: BJC-2018
+    port: 6379
+    timeout: 10000
+
+system:
+  proxy:
+    user: system-service
+
+    
+server:
+  port: 7779
+
+logging:
+  level:
+    root: info
+  path: /tmp/log

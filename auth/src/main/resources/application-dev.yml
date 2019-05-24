@@ -1,0 +1,31 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka/
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: mgr-auth
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://10.100.254.11:5432/micro_cloud_auth
+    username: myerp
+    password: godblessme
+  redis:
+    host: 10.100.254.229
+    password: bjc-2018
+    port: 6379
+
+server:
+  port: 7779
+
+logging:
+  level:
+    root: info
+    org.springframework.security: debug
+  path: applog
