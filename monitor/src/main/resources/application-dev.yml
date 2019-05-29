@@ -9,30 +9,14 @@ eureka:
 
 spring:
   application:
-    name: mgr-auth
+    name: mgr-monitor
   security:
     user:
       password: password
       name: user
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://10.100.254.11:5432/micro_cloud_auth
-    username: myerp
-    password: godblessme
-  redis:
-    host: 10.100.254.229
-    password: bjc-2018
-    port: 6379
-    timeout: 2s
 
 server:
-  port: 7779
-  servlet:
-    session:
-      cookie:
-        name: OAUTH2SESSION
+  port: 8888
 
 logging:
-  level:
-    #org.springframework.security: debug
   path: applog

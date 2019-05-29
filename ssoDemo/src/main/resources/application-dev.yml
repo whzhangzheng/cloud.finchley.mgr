@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: app-server-demo
+  main:
+    allow-bean-definition-overriding: true
+  security:
+    user:
+      name: user
+      password: password
+
+# eureka的默认端口是8761
+server:
+  port: 1001
+  servlet:
+    session:
+      cookie:
+        name: DEMOSESSION
+
+eureka:
+  instance:
+     prefer-ip-address: true                    #是否使用主机名来定义注册中心的地址  false：不使用
+     instance-id: ${spring.cloud.client.ip-address}:${server.port}
+     health-check-url-path: /actuator/health
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka/
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:7779/oauth/token
+      user-authorization-uri: http://localhost:7779/oauth/authorize
+      client-id: ssoDemo
+      clientAuthenticationScheme: form
+      client-secret: 123456
+    resource:
+      user-info-uri: http://localhost:7779/user
+      prefer-token-info: false
+
+logging:
+  level:
+    org.springframework.security: debug
+    root: info
+  path: applog

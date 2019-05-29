@@ -1,0 +1,59 @@
+zuul:
+  sensitiveHeaders:
+  #打开网关支持重试开关
+  retryable: true
+  add-host-header: true
+hystrix:
+  stream:
+    dashboard:
+      intervalInMilliseconds: 500
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+        timeout:
+          enabled: true
+      
+spring:
+  #打开负载局衡器支持重试开关
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+  servlet:
+    multipart:
+      max-file-size: 100MB #最大文件大小
+      max-request-size: 100MB
+  profiles:
+    active: dev
+      
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 25000
+  OkToRetryOnAllOperations: false
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+
+
+server:
+  session-timeout: 1800
+  tomcat:
+    basedir: /springboot-tmp
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #exclude: []
+
+
+
+
