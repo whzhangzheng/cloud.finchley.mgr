@@ -1,1 +1,1 @@
-# cloud.finchley.mgr
+# cloud.greenwich.mgr
