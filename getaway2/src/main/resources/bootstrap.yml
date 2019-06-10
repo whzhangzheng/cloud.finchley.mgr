@@ -49,23 +49,7 @@ sys:
   security:
     ignore:
       urls:
-        - /info
-        - /health
-        - /env
-        - /metrics*
-        - /trace
-        - /dump
-        - /hystrix*
-        - /refresh
-        - /logfile
-        - /flyway
-        - /liquibase
-        - /heapdump
-        - /loggers
-        - /auditevents
-        - /jolokia/
-        - /jolokia
-        - /configprops
+        - /actuator/**
         - /css/**/*.*
         - /img/**/*.*
         - /js/**/*.*

@@ -40,7 +40,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.bjc" additivity="false">
+    <logger name="cn.zhangz" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="logFile" />
     </logger>
