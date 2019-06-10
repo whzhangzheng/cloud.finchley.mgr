@@ -13,4 +13,5 @@ CREATE TABLE public.oauth_client_details
   autoapprove VARCHAR(256) DEFAULT NULL
 );
 
-INSERT INTO oauth_client_details VALUES ('bjc-cloud', NULL, 'bjc-cloud-2019', 'root', 'password', '', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO oauth_client_details VALUES ('bjc1', NULL, '{noop}bjc-2018', 'root', 'password', '', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO oauth_client_details VALUES ('serverDemo', NULL, '{noop}123456', 'root', 'authorization_code', 'http://localhost:1001/login', NULL, 6000, NULL, NULL, 'true');
