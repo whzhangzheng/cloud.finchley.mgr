@@ -19,7 +19,7 @@ $("[data-toggle=popover]").popover();
 $('.collapse-link').click(function () {
     var ibox = $(this).closest('div.ibox');
     var button = $(this).find('i');
-    var content = ibox.find('div.ibox-constants');
+    var content = ibox.find('div.ibox-content');
     content.slideToggle(200);
     button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
     ibox.toggleClass('').toggleClass('border-bottom');
@@ -119,7 +119,7 @@ var liuyanButton = function (context) {
 	    contents: '<i class="fa fa-child"/> 留言',
 	    tooltip: '留言代码块',
 	    click: function () {
-	      context.invoke('editor.pasteHTML', '<div class="pet_comment_list" style="padding-top: 0px"><div class="pet_comment_list_wap" style="background: #f2f2f2;"><div class="pet_comment_list_title" ><span id="leaveMsgTitle">精彩评论</span><span class="writememo" id="leaveMsgSubmit">评论</span></div>    <div data-am-widget="tabs" class="am-tabs am-tabs-default pet_comment_list_tab" >        <div class="am-tabs-bd pet_pl_list constants" id="content_leaveMsg" style="background-color: #f2f2f2;">        <ul data-tab-panel-0 class="am-tab-panel am-active " id="leaveMsgList">        </ul> </div> </div> </div> </div>');
+	      context.invoke('editor.pasteHTML', '<div class="pet_comment_list" style="padding-top: 0px"><div class="pet_comment_list_wap" style="background: #f2f2f2;"><div class="pet_comment_list_title" ><span id="leaveMsgTitle">精彩评论</span><span class="writememo" id="leaveMsgSubmit">评论</span></div>    <div data-am-widget="tabs" class="am-tabs am-tabs-default pet_comment_list_tab" >        <div class="am-tabs-bd pet_pl_list content" id="content_leaveMsg" style="background-color: #f2f2f2;">        <ul data-tab-panel-0 class="am-tab-panel am-active " id="leaveMsgList">        </ul> </div> </div> </div> </div>');
 	    }
 	 });
 	 return button.render();

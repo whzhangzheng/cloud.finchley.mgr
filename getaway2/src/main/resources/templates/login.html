@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <title>佰钧成 - 用户登录</title>
+    <link rel="stylesheet" th:href="@{${appName}+'/css/bootstrap.min.css'}"  />
+    <link rel="stylesheet" th:href="@{${appName}+'/css/font-awesome.css?v=4.4.0'}"  />
+    <link rel="stylesheet" th:href="@{${appName}+'/css/animate.css'}"  />
+    <link rel="stylesheet" th:href="@{${appName}+'/css/style.css'}"  />
+    <link rel="stylesheet" th:href="@{${appName}+'/css/login.css'}"  />
+    <link rel="stylesheet" th:href="@{${appName}+'/css/plugins/checkbox/awesome-bootstrap-checkbox.css'}" />
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
+
+</head>
+
+<body class="signin">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="signin-info">
+                    <div class="logopanel m-b">
+                        <h1 class="logo-name"><img th:src="@{${appName}+'/img/logo_login2.png'}"/></h1>
+                    </div>
+                    <div class="m-b"></div>
+                    <h4>欢迎使用 <strong>BJC管理系统</strong></h4>
+                    <ul class="m-b">
+                        <!--<li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势一</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势三</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势五</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-5" id="login_div">
+            	<div class="panel panel-default">
+            		<div class="panel-heading">
+                        <h4>登录</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form id="signupForm" th:action="@{${appName}+'/doLogin/default'}" method="post">
+		                    <input type="text" class="form-control uname" style="margin-top: -20px" id="username" name="username" th:value="${username}" placeholder="用户名" />
+		                    <input type="password" class="form-control pword m-b" id="password" name="password" placeholder="密码" />
+		                    <button class="btn btn-success btn-block" type="submit">登录</button>
+                            <label style="margin-top:20px"  th:if="${msg}" th:text="${msg}"></label>
+		                </form>
+                    </div>
+                    <!--<div style=" color: #808080; padding: 2px 15px; border-bottom: 1px solid transparent;">
+                        <span>其他方式登录:</span>
+                        <a th:href="${bjcHref}">OA登录</a>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="signup-footer">
+            <div class="pull-left">
+                &copy; 2018 All Rights Reserved. BJC
+            </div>
+        </div>
+    </div>
+</body>
+<script th:inline="javascript">
+    var ctx = [[${appName}]] + '/';
+</script>
+<!-- 全局js -->
+<script th:src="@{${appName}+'/js/jquery.min.js?v=2.1.4'}"></script>
+<script th:src="@{${appName}+'/js/bootstrap.min.js?v=3.3.6'}"></script>
+
+<!-- 自定义js -->
+<script th:src="@{${appName}+'/js/content.js?v=1.0.0'}"></script>
+
+<!-- jQuery Validation plugin javascript-->
+<script th:src="@{${appName}+'/js/ajax-util.js'}"></script>
+<script th:src="@{${appName}+'/js/plugins/validate/jquery.validate.min.js'}"></script>
+<script th:src="@{${appName}+'/js/plugins/validate/messages_zh.min.js'}"></script>
+<script th:src="@{${appName}+'/js/plugins/layer/layer.js'}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        validateRule();
+    });
+
+
+    function validateRule() {
+        var icon = '<i class="fa fa-times-circle"></i>';
+        $("#signupForm").validate({
+            rules: {
+                username: {
+                    required: true
+                },
+                password: {
+                    required: true
+                }
+            },
+            messages: {
+                username: {
+                    required: icon + "请输入您的用户名",
+                },
+                password: {
+                    required: icon + "请输入您的密码",
+                }
+            }
+        })
+    }
+
+
+</script>
+</html>
