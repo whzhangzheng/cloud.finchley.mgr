@@ -1,6 +1,6 @@
 package cn.zhangz.getaway2.config.filter;
 
-import cn.zhangz.common.model.Result;
+import cn.zhangz.getaway2.config.model.Result;
 import cn.zhangz.getaway2.config.util.HttpUtil;
 import cn.zhangz.getaway2.config.util.TokenCookieUtil;
 import com.netflix.zuul.ZuulFilter;

@@ -29,7 +29,7 @@ public class ResourceConfigurer extends ResourceServerConfigurerAdapter {
     @Autowired
     private AccessTokenProperties accessTokenProperties;
     @Autowired
-    private FilterIgnorePropertiesConfig filterIgnorePropertiesConfig;
+    private FilterIgnoreProperties filterIgnoreProperties;
     @Autowired
     private RestTemplate restTemplate;
 
@@ -66,7 +66,7 @@ public class ResourceConfigurer extends ResourceServerConfigurerAdapter {
         http.addFilterAfter(new TokenFilter(), LogoutFilter.class);
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler).authenticationEntryPoint(authenticationEntryPoint);
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http.authorizeRequests();
-        filterIgnorePropertiesConfig.getUrls().forEach(url -> registry.antMatchers(url).permitAll());
+        filterIgnoreProperties.getUrls().forEach(url -> registry.antMatchers(url).permitAll());
         registry.anyRequest().authenticated();
     }
 

@@ -1,4 +1,4 @@
-package cn.zhangz.common.model;
+package cn.zhangz.getaway2.config.model;
 
 import java.util.HashMap;
 import java.util.Map;

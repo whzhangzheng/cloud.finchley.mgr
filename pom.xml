@@ -16,7 +16,6 @@
         <module>getaway</module>
         <module>ssoDemo</module>
         <module>getaway2</module>
-        <module>common</module>
     </modules>
 
     <properties>

@@ -14,6 +14,6 @@ import java.util.List;
 @RefreshScope
 @ConditionalOnExpression("!'${sys.security.ignore}'.isEmpty()")
 @ConfigurationProperties(prefix = "sys.security.ignore")
-public class FilterIgnorePropertiesConfig {
+public class FilterIgnoreProperties {
     private List<String> urls = new ArrayList<>();
 }
