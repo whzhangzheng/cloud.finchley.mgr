@@ -1,8 +1,8 @@
 spring:
   application:
-    name: app-server-demo
-  main:
-    allow-bean-definition-overriding: true
+    name: app-sso-demo
+  #main:
+    #allow-bean-definition-overriding: true
   security:
     user:
       name: user
@@ -39,6 +39,6 @@ security:
 
 logging:
   level:
-    org.springframework.security: debug
+    #org.springframework.security: debug
     root: info
   path: applog
