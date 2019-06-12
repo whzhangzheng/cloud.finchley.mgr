@@ -10,12 +10,16 @@ public class LoginHandleConfig {
     @Autowired
     private LoginProperties loginProperties;
 
+    private LoginIndex getLoginIndex(){
+        return loginProperties;
+    }
+
     @Bean
     public LoginHandleAdepter loginHandleAdepter(){
         LoginHandleAdepter loginHandleAdepter = new LoginHandleAdepter();
         //每多支持一种来源的登录,都需要在此处添加一个handle
         DefaultLoginHandle defaultLoginHandle = new DefaultLoginHandle();
-        defaultLoginHandle.setIndexUrl(loginProperties.getIndex());
+        defaultLoginHandle.setIndexUrl(getLoginIndex().getLoginIndex());
         loginHandleAdepter.addLoginHandle(defaultLoginHandle);
 
         return loginHandleAdepter;

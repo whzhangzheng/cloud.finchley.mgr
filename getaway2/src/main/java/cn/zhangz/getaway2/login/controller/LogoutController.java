@@ -40,11 +40,15 @@ public class LogoutController {
     @Autowired
     private LoginProperties loginProperties;
 
+    private LoginModel getModel(){
+        return loginProperties;
+    }
+
     private String getLoginModel(){
-        if(null == loginProperties || org.apache.commons.lang3.StringUtils.isEmpty(loginProperties.getModel())){
+        if(null == getModel() || org.apache.commons.lang3.StringUtils.isEmpty(getModel().getLoginModel())){
             return "default";
         }
-        return loginProperties.getModel();
+        return getModel().getLoginModel();
     }
 
     @GetMapping("/logout")

@@ -27,11 +27,15 @@ public class LoginController extends AbstractLoginController {
     @Autowired
     private LoginProperties loginProperties;
 
+    private LoginModel getModel(){
+        return loginProperties;
+    }
+
     private String getLoginModel(){
-        if(null == loginProperties || StringUtils.isEmpty(loginProperties.getModel())){
+        if(null == getModel() || StringUtils.isEmpty(getModel().getLoginModel())){
             return "default";
         }
-        return loginProperties.getModel();
+        return getModel().getLoginModel();
     }
 
     @ModelAttribute

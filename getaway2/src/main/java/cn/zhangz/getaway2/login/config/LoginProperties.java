@@ -1,5 +1,6 @@
 package cn.zhangz.getaway2.login.config;
 
+import cn.zhangz.getaway2.login.controller.LoginModel;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,7 +12,17 @@ import org.springframework.context.annotation.Configuration;
 @RefreshScope
 @ConditionalOnExpression("!'${sys.login}'.isEmpty()")
 @ConfigurationProperties(prefix = "sys.login")
-public class LoginProperties {
+public class LoginProperties implements LoginIndex, LoginModel {
     private String model;
     private String index;
+
+    @Override
+    public String getLoginIndex() {
+        return this.index;
+    }
+
+    @Override
+    public String getLoginModel() {
+        return this.model;
+    }
 }
