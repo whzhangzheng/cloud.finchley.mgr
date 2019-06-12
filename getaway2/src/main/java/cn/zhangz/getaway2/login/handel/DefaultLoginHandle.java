@@ -4,6 +4,7 @@ import cn.zhangz.getaway2.login.model.LoginParameters;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class DefaultLoginHandle implements LoginHandle {
 
@@ -48,5 +49,9 @@ public class DefaultLoginHandle implements LoginHandle {
         return getIndexUrl();
     }
 
+    @Override
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
+        return;
+    }
 
 }

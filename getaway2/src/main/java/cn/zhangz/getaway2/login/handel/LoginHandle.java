@@ -3,6 +3,7 @@ package cn.zhangz.getaway2.login.handel;
 import cn.zhangz.getaway2.login.model.LoginParameters;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 登录处理
@@ -33,4 +34,11 @@ public interface LoginHandle {
      * 首页url
      */
     String index();
+
+    /**
+     * 登出处理
+     * @param request
+     * @param response
+     */
+    void logout(HttpServletRequest request, HttpServletResponse response);
 }

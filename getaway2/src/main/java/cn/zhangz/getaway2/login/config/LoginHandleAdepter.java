@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.util.CollectionUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,5 +89,20 @@ public class LoginHandleAdepter {
             throw new Exception("UnSupport Login Model!");
         }
         return handle.deal(request);
+    }
+
+    /**
+     * 登出
+     * @param loginModel 登录model
+     * @param request
+     * @param response
+     */
+    public void logout(String loginModel, HttpServletRequest request, HttpServletResponse response) throws Exception
+    {
+        LoginHandle handle = getHandle(loginModel);
+        if(null == handle){
+            throw new Exception("UnSupport Login Model!");
+        }
+        handle.logout(request,response);
     }
 }
