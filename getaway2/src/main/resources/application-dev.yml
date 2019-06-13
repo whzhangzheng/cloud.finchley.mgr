@@ -24,7 +24,7 @@ logging:
     org.springframework.security: debug
 sys:
   login:
-    model: default
+    model: bjc
     index: /system-web/index
   security:
     token-access:

@@ -91,7 +91,7 @@ public class LoginController extends AbstractLoginController {
      * @param request
      * @param response
      */
-    @PostMapping("/doLogin/{model}")
+    @RequestMapping("/doLogin/{model}")
     @ResponseBody
     public void doLogin(@PathVariable(value = "model") String model, HttpServletRequest request, HttpServletResponse response){
         LoginParameters loginParameters = null;

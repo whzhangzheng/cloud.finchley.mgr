@@ -1,5 +1,6 @@
 package cn.zhangz.getaway2.login.config;
 
+import cn.zhangz.getaway2.login.handel.BjcLoginHandle;
 import cn.zhangz.getaway2.login.handel.DefaultLoginHandle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,11 @@ public class LoginHandleConfig {
         DefaultLoginHandle defaultLoginHandle = new DefaultLoginHandle();
         defaultLoginHandle.setIndexUrl(getLoginIndex().getLoginIndex());
         loginHandleAdepter.addLoginHandle(defaultLoginHandle);
+
+        //每多支持一种来源的登录,都需要在此处添加一个handle
+        BjcLoginHandle bjcLoginHandle = new BjcLoginHandle();
+        bjcLoginHandle.setIndexUrl(getLoginIndex().getLoginIndex());
+        loginHandleAdepter.addLoginHandle(bjcLoginHandle);
 
         return loginHandleAdepter;
     }

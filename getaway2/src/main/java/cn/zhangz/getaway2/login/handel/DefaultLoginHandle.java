@@ -5,6 +5,7 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class DefaultLoginHandle implements LoginHandle {
 
@@ -51,7 +52,11 @@ public class DefaultLoginHandle implements LoginHandle {
 
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response) {
-        return;
+        try {
+            response.sendRedirect(loginPage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
