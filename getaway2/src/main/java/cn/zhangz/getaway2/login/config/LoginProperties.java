@@ -1,6 +1,5 @@
 package cn.zhangz.getaway2.login.config;
 
-import cn.zhangz.getaway2.login.controller.LoginModel;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.ConfigurationProperties;

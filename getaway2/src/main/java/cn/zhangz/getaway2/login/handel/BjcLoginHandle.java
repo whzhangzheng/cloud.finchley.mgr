@@ -1,5 +1,6 @@
 package cn.zhangz.getaway2.login.handel;
 
+import cn.zhangz.getaway2.login.constants.LoginConstants;
 import cn.zhangz.getaway2.login.model.LoginParameters;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
@@ -18,8 +19,7 @@ import java.util.Map;
 @Slf4j
 public class BjcLoginHandle implements LoginHandle {
 
-    private final String bjcSource = "bjc";
-
+    private final String bjcSource = LoginConstants.bjc_login_model;
 
     private String indexUrl;
 

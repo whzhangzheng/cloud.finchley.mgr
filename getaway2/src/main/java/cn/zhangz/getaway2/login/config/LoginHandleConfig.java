@@ -16,19 +16,24 @@ public class LoginHandleConfig {
     }
 
     @Bean
-    public LoginHandleAdepter loginHandleAdepter(){
-        LoginHandleAdepter loginHandleAdepter = new LoginHandleAdepter();
-        //每多支持一种来源的登录,都需要在此处添加一个handle
+    public LoginHandleActuator loginHandleActuator(){
+        LoginHandleActuator loginHandleActuator = new LoginHandleActuator();
+
+        DefaultLoginHandleFactory loginHandleFactory = new DefaultLoginHandleFactory();
+
+        //支持默认登录
         DefaultLoginHandle defaultLoginHandle = new DefaultLoginHandle();
         defaultLoginHandle.setIndexUrl(getLoginIndex().getLoginIndex());
-        loginHandleAdepter.addLoginHandle(defaultLoginHandle);
+        loginHandleFactory.addLoginHandle(defaultLoginHandle);
 
-        //每多支持一种来源的登录,都需要在此处添加一个handle
+        //支持bjc登录
         BjcLoginHandle bjcLoginHandle = new BjcLoginHandle();
         bjcLoginHandle.setIndexUrl(getLoginIndex().getLoginIndex());
-        loginHandleAdepter.addLoginHandle(bjcLoginHandle);
+        loginHandleFactory.addLoginHandle(bjcLoginHandle);
 
-        return loginHandleAdepter;
+
+        loginHandleActuator.setLoginHandleFactory(loginHandleFactory);
+        return loginHandleActuator;
     }
 
 }

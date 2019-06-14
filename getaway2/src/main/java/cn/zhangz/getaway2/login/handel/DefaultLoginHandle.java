@@ -1,5 +1,6 @@
 package cn.zhangz.getaway2.login.handel;
 
+import cn.zhangz.getaway2.login.constants.LoginConstants;
 import cn.zhangz.getaway2.login.model.LoginParameters;
 import org.springframework.util.StringUtils;
 
@@ -9,7 +10,7 @@ import java.io.IOException;
 
 public class DefaultLoginHandle implements LoginHandle {
 
-    private final String defaultSource = "default";
+    private final String defaultSource = LoginConstants.default_login_model;
 
     private String indexUrl;
 

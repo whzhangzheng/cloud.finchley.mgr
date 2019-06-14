@@ -1,8 +1,10 @@
 package cn.zhangz.getaway2.login.controller;
 
 
+import cn.zhangz.getaway2.login.config.LoginModel;
 import cn.zhangz.getaway2.login.config.LoginProperties;
-import cn.zhangz.getaway2.login.config.LoginHandleAdepter;
+import cn.zhangz.getaway2.login.config.LoginHandleActuator;
+import cn.zhangz.getaway2.login.constants.LoginConstants;
 import cn.zhangz.getaway2.login.model.LoginParameters;
 import cn.zhangz.getaway2.login.model.PasswordTokenParameters;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +24,7 @@ import java.io.IOException;
 public class LoginController extends AbstractLoginController {
 
     @Autowired
-    private LoginHandleAdepter loginHandleAdepter;
+    private LoginHandleActuator loginHandleActuator;
 
     @Autowired
     private LoginProperties loginProperties;
@@ -33,7 +35,7 @@ public class LoginController extends AbstractLoginController {
 
     private String getLoginModel(){
         if(null == getModel() || StringUtils.isEmpty(getModel().getLoginModel())){
-            return "default";
+            return LoginConstants.default_login_model;
         }
         return getModel().getLoginModel();
     }
@@ -47,7 +49,7 @@ public class LoginController extends AbstractLoginController {
     public void loginPage(HttpServletRequest request, HttpServletResponse response){
         String redirect = null;
         try{
-            redirect = loginHandleAdepter.getLoginPage(getLoginModel());
+            redirect = loginHandleActuator.getLoginPage(getLoginModel());
         }catch (Exception e){
             log.error("Get Login Page Error! " + e.getMessage());
             redirect = "/login";
@@ -97,9 +99,9 @@ public class LoginController extends AbstractLoginController {
         LoginParameters loginParameters = null;
         try{
             //设置首页
-            setIndex(loginHandleAdepter.getIndex(model));
+            setIndex(loginHandleActuator.getIndex(model));
             //获取登录信息
-            loginParameters = loginHandleAdepter.handle(model,request);
+            loginParameters = loginHandleActuator.handle(model,request);
         }catch (Exception e){
             exceptionHandle(request,response,new Exception("user or password is null"));
             return;

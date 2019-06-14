@@ -2,8 +2,10 @@ package cn.zhangz.getaway2.login.controller;
 
 import cn.zhangz.getaway2.config.security.AccessTokenProperties;
 import cn.zhangz.getaway2.config.util.TokenCookieUtil;
-import cn.zhangz.getaway2.login.config.LoginHandleAdepter;
+import cn.zhangz.getaway2.login.config.LoginHandleActuator;
+import cn.zhangz.getaway2.login.config.LoginModel;
 import cn.zhangz.getaway2.login.config.LoginProperties;
+import cn.zhangz.getaway2.login.constants.LoginConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,7 @@ public class LogoutController {
     }
 
     @Autowired
-    private LoginHandleAdepter loginHandleAdepter;
+    private LoginHandleActuator loginHandleActuator;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -46,7 +48,7 @@ public class LogoutController {
 
     private String getLoginModel(){
         if(null == getModel() || org.apache.commons.lang3.StringUtils.isEmpty(getModel().getLoginModel())){
-            return "default";
+            return LoginConstants.default_login_model;
         }
         return getModel().getLoginModel();
     }
@@ -58,7 +60,7 @@ public class LogoutController {
             invalidateToken(token);
         }
         response.addCookie(TokenCookieUtil.deleteTokenCookie());
-        loginHandleAdepter.logout(getLoginModel(),request,response);
+        loginHandleActuator.logout(getLoginModel(),request,response);
     }
 
     private void invalidateToken(String token){
