@@ -2,7 +2,7 @@ package cn.zhangz.getaway2.login.config;
 
 import cn.zhangz.getaway2.login.handel.LoginHandle;
 
-public interface LoginHandleFactory{
+public interface LoginHandleContainer {
     /**
      * 添加handle
      * @param loginHandle

@@ -3,24 +3,21 @@ package cn.zhangz.getaway2.login.config;
 import cn.zhangz.getaway2.login.handel.LoginHandle;
 import cn.zhangz.getaway2.login.model.LoginParameters;
 import lombok.NoArgsConstructor;
-import org.springframework.util.CollectionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 public class LoginHandleActuator {
 
-    private LoginHandleFactory loginHandleFactory;
+    private LoginHandleContainer loginHandleContainer;
 
-    public LoginHandleFactory getLoginHandleFactory() {
-        return loginHandleFactory;
+    public LoginHandleContainer getLoginHandleContainer() {
+        return loginHandleContainer;
     }
 
-    public void setLoginHandleFactory(LoginHandleFactory loginHandleFactory) {
-        this.loginHandleFactory = loginHandleFactory;
+    public void setLoginHandleContainer(LoginHandleContainer loginHandleContainer) {
+        this.loginHandleContainer = loginHandleContainer;
     }
 
     /**
@@ -30,7 +27,7 @@ public class LoginHandleActuator {
      */
     public String getIndex(String loginModel) throws Exception
     {
-        LoginHandle handle = getLoginHandleFactory().getHandle(loginModel);
+        LoginHandle handle = getLoginHandleContainer().getHandle(loginModel);
         if(null == handle){
             throw new Exception("UnSupport Login Model!");
         }
@@ -44,7 +41,7 @@ public class LoginHandleActuator {
      */
     public String getLoginPage(String loginModel) throws Exception
     {
-        LoginHandle handle = getLoginHandleFactory().getHandle(loginModel);
+        LoginHandle handle = getLoginHandleContainer().getHandle(loginModel);
         if(null == handle){
             throw new Exception("UnSupport Login Model!");
         }
@@ -59,7 +56,7 @@ public class LoginHandleActuator {
      */
     public LoginParameters handle(String loginModel, HttpServletRequest request) throws Exception
     {
-        LoginHandle handle = getLoginHandleFactory().getHandle(loginModel);
+        LoginHandle handle = getLoginHandleContainer().getHandle(loginModel);
         if(null == handle){
             throw new Exception("UnSupport Login Model!");
         }
@@ -74,7 +71,7 @@ public class LoginHandleActuator {
      */
     public void logout(String loginModel, HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        LoginHandle handle = getLoginHandleFactory().getHandle(loginModel);
+        LoginHandle handle = getLoginHandleContainer().getHandle(loginModel);
         if(null == handle){
             throw new Exception("UnSupport Login Model!");
         }

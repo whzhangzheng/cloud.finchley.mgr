@@ -6,7 +6,7 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultLoginHandleFactory implements LoginHandleFactory {
+public class DefaultLoginHandleContainer implements LoginHandleContainer {
 
     private List<LoginHandle> handles;
 
