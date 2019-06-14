@@ -13,11 +13,18 @@ public class LoginHandleActuator {
     private LoginHandleContainer loginHandleContainer;
 
     public LoginHandleContainer getLoginHandleContainer() {
+        if(null == this.loginHandleContainer){
+            return new DefaultLoginHandleContainer();
+        }
         return loginHandleContainer;
     }
 
     public void setLoginHandleContainer(LoginHandleContainer loginHandleContainer) {
         this.loginHandleContainer = loginHandleContainer;
+    }
+
+    public void addLoginHandle(LoginHandle loginHandle){
+        getLoginHandleContainer().addLoginHandle(loginHandle);
     }
 
     /**

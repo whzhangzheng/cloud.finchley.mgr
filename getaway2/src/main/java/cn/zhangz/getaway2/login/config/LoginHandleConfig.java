@@ -18,21 +18,17 @@ public class LoginHandleConfig {
     @Bean
     public LoginHandleActuator loginHandleActuator(){
         LoginHandleActuator loginHandleActuator = new LoginHandleActuator();
-        //创建LoginHandle容器
-        LoginHandleContainer loginHandleContainer = new DefaultLoginHandleContainer();
 
         //支持默认登录
         DefaultLoginHandle defaultLoginHandle = new DefaultLoginHandle();
         defaultLoginHandle.setIndexUrl(getLoginIndex().getLoginIndex());
-        loginHandleContainer.addLoginHandle(defaultLoginHandle);
+        loginHandleActuator.addLoginHandle(defaultLoginHandle);
 
         //支持bjc登录
         BjcLoginHandle bjcLoginHandle = new BjcLoginHandle();
         bjcLoginHandle.setIndexUrl(getLoginIndex().getLoginIndex());
-        loginHandleContainer.addLoginHandle(bjcLoginHandle);
+        loginHandleActuator.addLoginHandle(bjcLoginHandle);
 
-
-        loginHandleActuator.setLoginHandleContainer(loginHandleContainer);
         return loginHandleActuator;
     }
 
