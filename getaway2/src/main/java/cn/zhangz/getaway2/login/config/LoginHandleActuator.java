@@ -10,12 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 @NoArgsConstructor
 public class LoginHandleActuator {
 
-    private LoginHandleContainer loginHandleContainer;
+    private LoginHandleContainer loginHandleContainer = new DefaultLoginHandleContainer();
 
     public LoginHandleContainer getLoginHandleContainer() {
-        if(null == this.loginHandleContainer){
-            return new DefaultLoginHandleContainer();
-        }
         return loginHandleContainer;
     }
 

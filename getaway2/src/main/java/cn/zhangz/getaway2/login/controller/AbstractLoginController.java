@@ -40,6 +40,19 @@ public abstract class AbstractLoginController {
         this.index = index;
     }
 
+    /**
+     * 登录页面
+     */
+    private String loginUrl;
+
+    public String getLoginUrl() {
+        return loginUrl;
+    }
+
+    public void setLoginUrl(String loginUrl){
+        this.loginUrl = loginUrl;
+    }
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -135,7 +148,7 @@ public abstract class AbstractLoginController {
     public void exceptionHandle(HttpServletRequest request, HttpServletResponse response, Exception e){
         log.error("----------------Login Exception-----------------" + e );
         try {
-            response.sendRedirect(getIndex()+"?error="+e.getMessage());
+            response.sendRedirect(getLoginUrl()+"?error="+e.getMessage());
         }catch (IOException ioe){
             log.error("Login fail! Redirect to Login Exception : " + ioe);
         }

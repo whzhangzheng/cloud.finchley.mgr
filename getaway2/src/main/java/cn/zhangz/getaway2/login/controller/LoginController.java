@@ -100,6 +100,8 @@ public class LoginController extends AbstractLoginController {
         try{
             //设置首页
             setIndex(loginHandleActuator.getIndex(model));
+            //设置登录地址
+            setLoginUrl(loginHandleActuator.getLoginPage(model));
             //获取登录信息
             loginParameters = loginHandleActuator.handle(model,request);
         }catch (Exception e){
