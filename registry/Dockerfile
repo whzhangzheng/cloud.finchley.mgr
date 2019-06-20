@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jdk-slim
 VOLUME /tmp/log
 ADD ./build/start.sh /bin/
 ADD ./target/*.jar /registry.jar
