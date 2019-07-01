@@ -103,7 +103,7 @@ public class LoginController extends AbstractLoginController {
             //设置登录地址
             setLoginUrl(loginHandleActuator.getLoginPage(model));
             //获取登录信息
-            loginParameters = loginHandleActuator.handle(model,request);
+            loginParameters = loginHandleActuator.getLoginInfo(model,request);
         }catch (Exception e){
             exceptionHandle(request,response,new Exception("user or password is null"));
             return;

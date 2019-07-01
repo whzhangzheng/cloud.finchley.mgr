@@ -24,8 +24,8 @@ logging:
     org.springframework.security: debug
 sys:
   login:
-    model: bjc
-    index: /system-web/index
+    model: default
+    index: /api-demo/test
   security:
     token-access:
       appName: mgr-auth

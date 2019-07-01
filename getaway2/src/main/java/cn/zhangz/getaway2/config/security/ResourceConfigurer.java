@@ -64,6 +64,7 @@ public class ResourceConfigurer extends ResourceServerConfigurerAdapter {
         //开启缓存设置
         http.headers().frameOptions().disable().cacheControl().disable();
         http.addFilterAfter(new TokenFilter(), LogoutFilter.class);
+        http.logout().disable();
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler).authenticationEntryPoint(authenticationEntryPoint);
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http.authorizeRequests();
         filterIgnoreProperties.getUrls().forEach(url -> registry.antMatchers(url).permitAll());

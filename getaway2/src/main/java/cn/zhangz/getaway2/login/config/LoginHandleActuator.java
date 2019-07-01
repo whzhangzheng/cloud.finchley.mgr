@@ -53,12 +53,12 @@ public class LoginHandleActuator {
     }
 
     /**
-     * 处理登录请求
+     * 获取登录信息
      * @param loginModel 登录model
      * @param request 登录请求
      * @return
      */
-    public LoginParameters handle(String loginModel, HttpServletRequest request) throws Exception
+    public LoginParameters getLoginInfo(String loginModel, HttpServletRequest request) throws Exception
     {
         LoginHandle handle = getLoginHandleContainer().getHandle(loginModel);
         if(null == handle){
